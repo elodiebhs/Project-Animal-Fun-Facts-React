@@ -9,8 +9,17 @@ const background = (<img
   alt="ocean"
   src="/images/ocean.jpg" />)
 
-const images =[];
 
+function displayFact(event) {
+  // targets {animal} in animal image array alt
+  const facts = animals[event.target.alt].facts;
+  // generates a random index based on animal facts array length
+  const randomFactIndex = Math.floor(Math.random() * facts.length)
+  const fact = facts[randomFactIndex];
+  document.getElementById('fact').innerHTML = fact;
+  }
+
+const images =[];
 for (const animal in animals) {
   images.push( 
     <img
@@ -20,9 +29,11 @@ for (const animal in animals) {
       src={animals[animal].image}
       ariaLabel={animal}
       role='button'
+      onClick={displayFact}
     />
   )
 }
+
 
 const animalFacts = (
   <div>
@@ -30,6 +41,7 @@ const animalFacts = (
       {title === "" ? 'Click an animal for a fun fact!' : title}
     </h1>
     {background}
+    <p id='fact'></p>
     <div classeName='animals'>
       {images}
     </div>
