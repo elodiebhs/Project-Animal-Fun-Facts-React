@@ -9,6 +9,8 @@ const background = (<img
   alt="ocean"
   src="/images/ocean.jpg" />)
 
+const showBackground = true;
+
 
 function displayFact(event) {
   // targets {animal} in animal image array alt
@@ -40,7 +42,8 @@ const animalFacts = (
     <h1>
       {title === "" ? 'Click an animal for a fun fact!' : title}
     </h1>
-    {background}
+    {/* If showBackground is true, background should show up. If it’s false, it should not. */}
+    {showBackground && background}
     <p id='fact'></p>
     <div classeName='animals'>
       {images}
